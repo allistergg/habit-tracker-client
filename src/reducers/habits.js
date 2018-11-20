@@ -1,9 +1,10 @@
-import {FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS} from '../actions/habits'
+import {FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS, CHANGE_DAY} from '../actions/habits'
 
 const initialState = {
-    habits: [],
+    days : {'Monday' : {dayId: 1, habits : []}},
     loading: false,
-    error: null
+    error: null,
+    day: 'Monday'
 }
 
 export default (state=initialState, action) => {
@@ -17,7 +18,7 @@ export default (state=initialState, action) => {
     else if (action.type === FETCH_HABITS_SUCCESS) {
         return {
             ...state,
-            habits: action.habits,
+            days : action.days,
             loading: false,
             error: null
         }
@@ -36,19 +37,56 @@ export default (state=initialState, action) => {
         }
     }
     else if (action.type === CHECK_HABIT_SUCCESS) {
-        const modArray = state.habits.map(obj => obj)
+        const modArray = state.days[action.day].habits.map(obj => obj)
         for (let i = 0; i < modArray.length; i++) {
             if (modArray[i].id === action.id) {
                 modArray[i].checked = !modArray[i].checked;
                 break;
             } 
         }
-        console.log(modArray);
+
+        const modDay = {
+            ...state.days[action.day],
+            habits : modArray
+        }
+
         
+        console.log(modArray);
+        console.log(modDay)
         
         return {
             ...state,
-            habits : modArray
+            days : {...state.days, modDay}
+        }
+    }
+    else if (action.type === CHANGE_DAY) {
+        let newDay;
+        let newDayId;
+        console.log(action.day)
+        if (action.direction === 'next') {
+            newDayId = state.days[action.day].dayId + 1
+        } else if (action.direction === 'prev') {
+            newDayId = state.days[action.day].dayId - 1
+        }
+        console.log(newDayId)
+        for (let day in state.days) {
+            console.log(day)
+            console.log(state.days[day].dayId)
+            if (state.days[day].dayId === newDayId) {
+                
+                console.log(day)
+            
+                newDay = day
+                console.log(newDay)
+                break;
+            } else {
+                newDay = action.day
+            }
+        }
+        
+        return {
+            ...state,
+            day: newDay
         }
     }
     return state;

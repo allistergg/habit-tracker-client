@@ -5,9 +5,9 @@ export const fetchHabitsRequest = () => ({
     type: FETCH_HABITS_REQUEST
 })
 export const FETCH_HABITS_SUCCESS = 'FETCH_HABITS_SUCCESS';
-export const fetchHabitsSuccess = habits => ({
+export const fetchHabitsSuccess = days => ({
     type: FETCH_HABITS_SUCCESS,
-    habits
+    days
 })
 
 export const FETCH_HABITS_ERROR = 'FETCH_HABITS_ERROR';
@@ -23,10 +23,19 @@ export const addHabitSuccess = habit => ({
 })
 
 export const CHECK_HABIT_SUCCESS = 'CHECK_HABIT_SUCCESS';
-export const checkHabitSuccess = id => ({
+export const checkHabitSuccess = (day, id) => ({
     type: CHECK_HABIT_SUCCESS,
-    id
+    id,
+    day
 })
+
+export const CHANGE_DAY = 'CHANGE_DAY';
+export const changeDayAction = (day, direction) => ({
+    type: CHANGE_DAY,
+    day,
+    direction
+}
+)
 
 
 
@@ -69,11 +78,11 @@ export const fetchHabits = () => dispatch => {
 
     }
 
-export const checkHabitAction = id => dispatch => {
+export const checkHabitAction = (day, id) => dispatch => {
 
     return fetch(`${API_BASE_URL}`, {
         method: 'PUT',
-        body: JSON.stringify({"id" : id}),
+        body: JSON.stringify({"id" : id, "day" : day}),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -82,6 +91,7 @@ export const checkHabitAction = id => dispatch => {
         return res.json();
     })
     .then(data => {
-        dispatch(checkHabitSuccess(data.id))
+        console.log(data)
+        dispatch(checkHabitSuccess(day, data.id))
     })
 }
