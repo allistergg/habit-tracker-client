@@ -37,27 +37,22 @@ export default (state=initialState, action) => {
         }
     }
     else if (action.type === CHECK_HABIT_SUCCESS) {
-        const modArray = state.days[action.day].habits.map(obj => obj)
+         
+        const modArray = state.days[action.day].habits.map(item => Object.assign({}, item))
         for (let i = 0; i < modArray.length; i++) {
             if (modArray[i].id === action.id) {
                 modArray[i].checked = !modArray[i].checked;
                 break;
             } 
         }
-
-        const modDay = {
-            ...state.days[action.day],
-            habits : modArray
-        }
-
-        
-        console.log(modArray);
-        console.log(modDay)
-        
-        return {
-            ...state,
-            days : {...state.days, modDay}
-        }
+       
+        return Object.assign({}, state, {
+           days : Object.assign({}, state.days, {
+               [action.day] : Object.assign({}, state.days[action.day], {
+                   habits : modArray
+               })
+           } )
+        })
     }
     else if (action.type === CHANGE_DAY) {
         let newDay;

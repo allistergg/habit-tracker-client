@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchHabits, checkHabitAction, changeDayAction } from '../actions/habits';
+
 import AddHabit from './add-habit';
 
 
@@ -31,23 +32,28 @@ export class Habits extends React.Component {
 
         return (
 
+            
+                <div>
+                    <h1> <button onClick={() => {
+                        console.log('clicked');
+                        this.changeDay(this.props.day, 'prev')
+                    }}>Prev</button>
+                        {this.props.day}
+                        <button onClick={() => {
+                            console.log('clicked');
+                            this.changeDay(this.props.day, 'next')
+                        }}>Next</button>
+                    </h1>
+                    
+                    <ul>{habitList}</ul>
+                    {/* <AddHabit /> */}
+                    <p>{this.props.days[this.props.day].habits.filter(habit => habit.checked === true).length}/ {this.props.days[this.props.day].habits.length}</p>
+                    
+                    
+                </div>
+        
 
-            <div>
-                <h1> <button onClick={() => {
-                    console.log('clicked');
-                    this.changeDay(this.props.day, 'prev')
-                }}>Prev</button>
-                    {this.props.day}
-                    <button onClick={() => {
-                    console.log('clicked');
-                    this.changeDay(this.props.day, 'next')
-                }}>Next</button>
-                </h1>
 
-                <ul>{habitList}</ul>
-                <AddHabit />
-                <p>{this.props.days[this.props.day].habits.filter(habit => habit.checked === true).length}/ {this.props.days[this.props.day].habits.length}</p>
-            </div>
 
         )
     }

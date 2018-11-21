@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Habits from './components/habits';
+import App from './app';
+
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
+
 import store from './store';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Habits />
-
-    </Provider>
+    
+        <Provider store={store}>
+            <App />
+            
+            
+        </Provider>
+        
+    
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
