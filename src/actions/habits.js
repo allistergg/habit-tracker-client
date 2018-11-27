@@ -17,9 +17,9 @@ export const fetchHabitsError = error => ({
 })
 
 export const ADD_HABIT_SUCCESS = 'ADD_HABIT_SUCCESS';
-export const addHabitSuccess = habit => ({
+export const addHabitSuccess = days => ({
     type: ADD_HABIT_SUCCESS,
-    habit
+    days
 })
 
 export const CHECK_HABIT_SUCCESS = 'CHECK_HABIT_SUCCESS';
@@ -43,7 +43,7 @@ export const addHabit = newHabit => dispatch => {
     console.log(newHabit)
     return fetch(`${API_BASE_URL}`, {
         method: 'POST',
-        body: JSON.stringify({"habit" : newHabit}),
+        body: JSON.stringify({name : newHabit}),
         headers: {
             'Content-Type': 'application/json'
         }

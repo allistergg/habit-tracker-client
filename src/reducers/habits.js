@@ -33,7 +33,7 @@ export default (state=initialState, action) => {
     else if (action.type === ADD_HABIT_SUCCESS) {
         return {
             ...state,
-            habits : [...state.habits, action.habit]
+            days: action.days
         }
     }
     else if (action.type === CHECK_HABIT_SUCCESS) {
@@ -76,11 +76,14 @@ export default (state=initialState, action) => {
         }
     }
     else if (action.type === CHANGE_DAY) {
+        
         let newDay;
         if (action.direction === 'next' && state.day < state.days.length -1) {
             newDay = state.day + 1
         } else if (action.direction === 'prev' && state.day > 0){
             newDay = state.day - 1
+        } else if (!action.direction) {
+            newDay = action.day
         } else {
             newDay = state.day
         }

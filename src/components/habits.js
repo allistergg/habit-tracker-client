@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchHabits, checkHabitAction, changeDayAction } from '../actions/habits';
 
-import AddHabit from './add-habit';
 
 
 export class Habits extends React.Component {
@@ -46,7 +45,7 @@ export class Habits extends React.Component {
                     </h1>
                     
                     <ul>{habitList}</ul>
-                    {/* <AddHabit /> */}
+                  
                     <p>{this.props.days[day].habits.filter(habit => habit.checked === true).length}/ {this.props.days[day].habits.length}</p>
                     
                     
