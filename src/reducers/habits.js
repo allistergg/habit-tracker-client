@@ -1,10 +1,10 @@
 import {FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS, CHANGE_DAY} from '../actions/habits'
 
 const initialState = {
-    days : {'Monday' : {dayId: 1, habits : []}},
+    days : [{date : new Date('2018-11-26'), _id : 1 , habits : []}],
     loading: false,
     error: null,
-    day: 'Monday'
+    day: 0
 }
 
 export default (state=initialState, action) => {
@@ -37,22 +37,43 @@ export default (state=initialState, action) => {
         }
     }
     else if (action.type === CHECK_HABIT_SUCCESS) {
+         console.log(action.data)
+
          
-        const modArray = state.days[action.day].habits.map(item => Object.assign({}, item))
-        for (let i = 0; i < modArray.length; i++) {
-            if (modArray[i].id === action.id) {
-                modArray[i].checked = !modArray[i].checked;
+        // const modArray = state.days[action.day].habits.map(item => Object.assign({}, item))
+        // for (let i = 0; i < modArray.length; i++) {
+        //     if (modArray[i].id === action.id) {
+        //         modArray[i].checked = !modArray[i].checked;
+        //         break;
+        //     } 
+        // }
+
+        let updateIndex;
+        for (let i = 0; i < state.days.length; i++) {
+            if (state.days[i]._id === action.data._id) {
+                updateIndex = i
                 break;
-            } 
+            }
         }
+        console.log(updateIndex)
+
+        
+        
+
+
        
-        return Object.assign({}, state, {
-           days : Object.assign({}, state.days, {
-               [action.day] : Object.assign({}, state.days[action.day], {
-                   habits : modArray
-               })
-           } )
-        })
+        // return Object.assign({}, state, {
+        //    days : Object.assign({}, state.days, {
+        //        [action.day] : Object.assign({}, state.days[action.day], {
+        //            habits : modArray
+        //        })
+        //    } )
+        // })
+
+        return {
+            ...state,
+            days : [...state.days.slice(0, updateIndex), action.data, ...state.days.slice(updateIndex + 1)]
+        }
     }
     else if (action.type === CHANGE_DAY) {
         let newDay;
@@ -62,6 +83,8 @@ export default (state=initialState, action) => {
             newDayId = state.days[action.day].dayId + 1
         } else if (action.direction === 'prev') {
             newDayId = state.days[action.day].dayId - 1
+        } else if (!action.direction) {
+            newDayId = state.days[action.day].dayId
         }
         console.log(newDayId)
         for (let day in state.days) {

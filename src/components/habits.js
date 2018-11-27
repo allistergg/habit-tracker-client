@@ -24,9 +24,9 @@ export class Habits extends React.Component {
     render() {
         let day = this.props.day
 
-        console.log(this.props.days[day])
+        console.log(this.props.days[0])
         let habitList = this.props.days[day].habits.map((habit) => {
-            return <li key={habit.id}>{habit.habit}<input onChange={() => this.checkHabit(day, habit.id)} type="checkbox" checked={habit.checked} /></li>
+            return <li key={habit.habit._id}>{habit.habit.name}<input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" checked={habit.checked} /></li>
         })
 
 
@@ -47,7 +47,7 @@ export class Habits extends React.Component {
                     
                     <ul>{habitList}</ul>
                     {/* <AddHabit /> */}
-                    <p>{this.props.days[this.props.day].habits.filter(habit => habit.checked === true).length}/ {this.props.days[this.props.day].habits.length}</p>
+                    {/* <p>{this.props.days[0].habits.filter(habit => habit.checked === true).length}/ {this.props.days[this.props.day].habits.length}</p> */}
                     
                     
                 </div>

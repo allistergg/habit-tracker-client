@@ -23,10 +23,9 @@ export const addHabitSuccess = habit => ({
 })
 
 export const CHECK_HABIT_SUCCESS = 'CHECK_HABIT_SUCCESS';
-export const checkHabitSuccess = (day, id) => ({
+export const checkHabitSuccess = (data) => ({
     type: CHECK_HABIT_SUCCESS,
-    id,
-    day
+    data
 })
 
 export const CHANGE_DAY = 'CHANGE_DAY';
@@ -84,7 +83,8 @@ export const checkHabitAction = (day, id) => dispatch => {
         method: 'PUT',
         body: JSON.stringify({"id" : id, "day" : day}),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'accept' : 'application/json'
         }
     })
     .then(res => {
@@ -92,6 +92,6 @@ export const checkHabitAction = (day, id) => dispatch => {
     })
     .then(data => {
         console.log(data)
-        dispatch(checkHabitSuccess(day, data.id))
+        dispatch(checkHabitSuccess(data))
     })
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchHabits, checkHabitAction } from '../actions/habits';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { fetchHabits, checkHabitAction, changeDayAction } from '../actions/habits';
 
 export class weekHabits extends React.Component {
 
@@ -13,11 +14,27 @@ export class weekHabits extends React.Component {
         console.log(id);
         this.props.dispatch(checkHabitAction(day, id))
     }
+
+    changeDay(day, direction) {
+        this.props.dispatch(changeDayAction(day, direction))
+    }
     
     render() {
         let days = Object.keys(this.props.days)
         console.log(days)
-        let dayList = days.map(day => <span>{day[0]}</span>)
+        let dayList = days.map(day => {
+            return (<Link to="/" onClick={() => {
+            console.log('clicked');
+            this.changeDay(day)
+        }}>{day[0]}</Link>)
+        })
+        
+        let displayList = days.map(day => {
+            return (<p>
+                {day[0]} : {this.props.days[day].habits.filter(habit => habit.checked === true).length} / {this.props.days[day].habits.length}
+            </p>)
+        })
+        
         let habitsList = this.props.days[this.props.day].habits.map(habit => <p>{habit.habit}
         <input onChange={() => this.checkHabit("Monday", habit.id)} type="checkbox" checked={this.props.days.Monday.habits[habit.id].checked} />
         <input onChange={() => this.checkHabit("Tuesday", habit.id)} type="checkbox" checked={this.props.days.Tuesday.habits[habit.id].checked} />
@@ -31,6 +48,9 @@ export class weekHabits extends React.Component {
             <div>
                 <div>{dayList}</div>
                 <div>{habitsList}</div>
+                <div>{displayList}</div>
+                    
+                   
             </div>
         )
     }
