@@ -77,29 +77,12 @@ export default (state=initialState, action) => {
     }
     else if (action.type === CHANGE_DAY) {
         let newDay;
-        let newDayId;
-        console.log(action.day)
-        if (action.direction === 'next') {
-            newDayId = state.days[action.day].dayId + 1
-        } else if (action.direction === 'prev') {
-            newDayId = state.days[action.day].dayId - 1
-        } else if (!action.direction) {
-            newDayId = state.days[action.day].dayId
-        }
-        console.log(newDayId)
-        for (let day in state.days) {
-            console.log(day)
-            console.log(state.days[day].dayId)
-            if (state.days[day].dayId === newDayId) {
-                
-                console.log(day)
-            
-                newDay = day
-                console.log(newDay)
-                break;
-            } else {
-                newDay = action.day
-            }
+        if (action.direction === 'next' && state.day < state.days.length -1) {
+            newDay = state.day + 1
+        } else if (action.direction === 'prev' && state.day > 0){
+            newDay = state.day - 1
+        } else {
+            newDay = state.day
         }
         
         return {

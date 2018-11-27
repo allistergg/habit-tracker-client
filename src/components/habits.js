@@ -23,8 +23,8 @@ export class Habits extends React.Component {
 
     render() {
         let day = this.props.day
-
-        console.log(this.props.days[0])
+        let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        console.log(day)
         let habitList = this.props.days[day].habits.map((habit) => {
             return <li key={habit.habit._id}>{habit.habit.name}<input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" checked={habit.checked} /></li>
         })
@@ -38,7 +38,7 @@ export class Habits extends React.Component {
                         console.log('clicked');
                         this.changeDay(this.props.day, 'prev')
                     }}>Prev</button>
-                        {this.props.day}
+                        {weekDays[day]}
                         <button onClick={() => {
                             console.log('clicked');
                             this.changeDay(this.props.day, 'next')
@@ -47,7 +47,7 @@ export class Habits extends React.Component {
                     
                     <ul>{habitList}</ul>
                     {/* <AddHabit /> */}
-                    {/* <p>{this.props.days[0].habits.filter(habit => habit.checked === true).length}/ {this.props.days[this.props.day].habits.length}</p> */}
+                    <p>{this.props.days[day].habits.filter(habit => habit.checked === true).length}/ {this.props.days[day].habits.length}</p>
                     
                     
                 </div>

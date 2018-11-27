@@ -20,29 +20,32 @@ export class weekHabits extends React.Component {
     }
     
     render() {
-        let days = Object.keys(this.props.days)
+        let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let days = this.props.days
         console.log(days)
-        let dayList = days.map(day => {
+        let dayList = days.map((day, index) => {
             return (<Link to="/" onClick={() => {
             console.log('clicked');
             this.changeDay(day)
-        }}>{day[0]}</Link>)
+            
+        }}>{weekDays[index]}</Link>)
         })
         
-        let displayList = days.map(day => {
+        let displayList = days.map((day, index) => {
+            console.log(day)
             return (<p>
-                {day[0]} : {this.props.days[day].habits.filter(habit => habit.checked === true).length} / {this.props.days[day].habits.length}
+                {weekDays[index]} : {day.habits.filter(habit => habit.checked === true).length} / {day.habits.length}
             </p>)
         })
         
-        let habitsList = this.props.days[this.props.day].habits.map(habit => <p>{habit.habit}
-        <input onChange={() => this.checkHabit("Monday", habit.id)} type="checkbox" checked={this.props.days.Monday.habits[habit.id].checked} />
-        <input onChange={() => this.checkHabit("Tuesday", habit.id)} type="checkbox" checked={this.props.days.Tuesday.habits[habit.id].checked} />
-        <input onChange={() => this.checkHabit("Wednesday", habit.id)} type="checkbox" checked={this.props.days.Wednesday.habits[habit.id].checked} />
-        <input onChange={() => this.checkHabit("Thursday", habit.id)} type="checkbox" checked={this.props.days.Thursday.habits[habit.id].checked} />
-        <input onChange={() => this.checkHabit("Friday", habit.id)} type="checkbox" checked={this.props.days.Friday.habits[habit.id].checked} />
-        <input onChange={() => this.checkHabit("Saturday", habit.id)} type="checkbox" checked={this.props.days.Saturday.habits[habit.id].checked} />
-        <input onChange={() => this.checkHabit("Sunday", habit.id)} type="checkbox" checked={this.props.days.Sunday.habits[habit.id].checked} />
+        let habitsList = days[this.props.day].habits.map((habit, index) => <p>{habit.habit.name}
+        <input onChange={() => this.checkHabit(days[0]._id, habit.habit._id)} type="checkbox" checked={days[0].habits[index].checked} />
+        <input onChange={() => this.checkHabit(days[1]._id, habit.habit._id)} type="checkbox" checked={days[1].habits[index].checked} />
+        <input onChange={() => this.checkHabit(days[2]._id, habit.habit._id)} type="checkbox" checked={days[2].habits[index].checked} />
+        <input onChange={() => this.checkHabit(days[3]._id, habit.habit._id)} type="checkbox" checked={days[3].habits[index].checked} />
+        <input onChange={() => this.checkHabit(days[4]._id, habit.habit._id)} type="checkbox" checked={days[4].habits[index].checked} />
+        <input onChange={() => this.checkHabit(days[5]._id, habit.habit._id)} type="checkbox" checked={days[5].habits[index].checked} />
+        <input onChange={() => this.checkHabit(days[6]._id, habit.habit._id)} type="checkbox" checked={days[6].habits[index].checked} />
         </p>)
         return (
             <div>
