@@ -12,20 +12,32 @@ export function AddHabit(props) {
         e.preventDefault()
         props.dispatch(addHabit(habitInput.value))
         console.log(habitInput.value)
+        habitInput.value = "";
+    }
+    let output;
+    if (props.addedHabit) {
+        output = <p>{props.addedHabit.name} added</p>
+    } else {
+        output = <p></p>
     }
     return (
         <div>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form className="add-form" onSubmit={(e) => handleSubmit(e)}>
                 <input ref={input => (habitInput = input)}></input>
-                <button>Add</button>
+                <button className="add-button">Add</button>
             </form>
+            <div>
+                {output}
+            </div>
         </div>
-
-
-
-
     )
 }
 
+export const mapStatetoProps = (state) => {
+    console.log(state)
+    return {
+        addedHabit : state.addedHabit
+    }
+}
 
-export default connect()(AddHabit);
+export default connect(mapStatetoProps)(AddHabit);

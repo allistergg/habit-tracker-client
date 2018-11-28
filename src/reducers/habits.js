@@ -4,7 +4,8 @@ const initialState = {
     days : [{date : new Date('2018-11-26'), _id : 1 , habits : []}],
     loading: false,
     error: null,
-    day: 0
+    day: 0,
+    addedHabit: ''
 }
 
 export default (state=initialState, action) => {
@@ -33,7 +34,7 @@ export default (state=initialState, action) => {
     else if (action.type === ADD_HABIT_SUCCESS) {
         return {
             ...state,
-            days: action.days
+            addedHabit: action.data
         }
     }
     else if (action.type === CHECK_HABIT_SUCCESS) {

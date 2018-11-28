@@ -17,9 +17,9 @@ export const fetchHabitsError = error => ({
 })
 
 export const ADD_HABIT_SUCCESS = 'ADD_HABIT_SUCCESS';
-export const addHabitSuccess = days => ({
+export const addHabitSuccess = data => ({
     type: ADD_HABIT_SUCCESS,
-    days
+    data
 })
 
 export const CHECK_HABIT_SUCCESS = 'CHECK_HABIT_SUCCESS';
@@ -76,6 +76,10 @@ export const fetchHabits = () => dispatch => {
         .catch((err) => dispatch(fetchHabitsError(err)))
 
     }
+
+export const fetchNames = () => dispatch => {
+    
+}
 
 export const checkHabitAction = (day, id) => dispatch => {
 

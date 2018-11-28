@@ -12,3 +12,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.prev {
+margin-left: 10px;
+margin-bottom: 10px;
+background-color: #1287a8;
+border: none;
+color: white;
+padding: 2px 4px;
+text-align: center;
+text-decoration: none;
+font-size: 14px;
+}
+
+.prev:hover {
+  background-color: red;
+}
+
+.next {
+margin-bottom: 10px;
+background-color:  #1287a8;
+border: none;
+color: white;
+padding: 2px 4px;
+text-align: center;
+text-decoration: none;
+font-size: 14px;
+}
+
+.next:hover {
+  background-color: red;
+}
+
+.dayName {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+.weekTable {
+  margin-top: 15px;
+}
+
+.nav-link {
+  display: inline-block;
+  background-color: #1287a8;
+  color: white;
+  padding: 10px 20px;
+  text-align: center; 
+  text-decoration: none;
+  
+}
+
+.nav-link:hover{
+  background-color: red;
+}
+
+.add-form {
+  margin-top: 20px;
+  
+}
+
+.add-button {
+  background-color: #1287a8;
+  color: white;
+  text-align: center;
+  padding: 2px;
+  text-decoration: none;
+  border: none;
+  margin-left: 5px;
+}
+
+.add-button:hover {
+background-color: red;
+}
+
+.dayLinks {
+  background-color: #1287a8;
+  color: white;
+  text-align: center;
+  padding: 2px;
+  text-decoration: none;
+}
+
+.dayLinks:hover {
+  background-color: red;
+}
