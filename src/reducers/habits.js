@@ -56,7 +56,8 @@ export default (state=initialState, action) => {
     else if (action.type === ADD_HABIT_SUCCESS) {
         return {
             ...state,
-            addedHabit: action.data
+            addedHabit: action.data,
+            habits: [...state.habits, action.data]
         }
     }
 

@@ -1,33 +1,30 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Habits from './components/habits';
-import weekHabits from './components/week-habits';
-import AddHabit from './components/add-habit';
-import EditHabit from './components/edit-habit';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+import LandingPage from './components/landing-page';
+import Dashboard from './dashboard';
 
 
-export default class App extends React.Component {
 
+export class App extends React.Component {
 
     render() {
-
         return (
-            <Router>
-                <nav>
-                    <Link className="nav-link" to='/'>Days</Link>
-                    <Link className="nav-link" to='/week'>Week</Link>
-                    <Link className="nav-link" to='/add'>Add Habit</Link>
-                    <Link className="nav-link" to='/edit'>Edit Habits</Link>
-                    <Route exact path='/' component={Habits} />
-                    <Route path='/week' component={weekHabits} />
-                    <Route path='/add' component={AddHabit}/>
-                    <Route path='/edit' component={EditHabit} />
-                </nav>
-            </Router>
-        )
+            
+            <div>
+                
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                
+            </div>
+        );
     }
-
-
-
 }
 
+const mapStateToProps = state => ({
+    // hasAuthToken: state.auth.authToken !== null,
+    // loggedIn: state.auth.currentUser !== null
+});
+
+// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
+export default withRouter(connect(mapStateToProps)(App));

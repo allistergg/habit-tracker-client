@@ -60,7 +60,7 @@ export const removeHabitSuccess = id => ({
 })
 
 export const removeHabit = id => dispatch => {
-    return fetch(`${API_BASE_URL}/${id}`, {
+    return fetch(`${API_BASE_URL}/habits/${id}`, {
         method: 'DELETE'
     })
     .then(dispatch(removeHabitSuccess(id)))
@@ -71,7 +71,7 @@ export const removeHabit = id => dispatch => {
 export const addHabit = newHabit => dispatch => {
     
     console.log(newHabit)
-    return fetch(`${API_BASE_URL}`, {
+    return fetch(`${API_BASE_URL}/habits`, {
         method: 'POST',
         body: JSON.stringify({name : newHabit}),
         headers: {
@@ -93,7 +93,7 @@ export const fetchHabits = () => dispatch => {
 
     dispatch(fetchHabitsRequest())
 
-    return fetch(`${API_BASE_URL}`)
+    return fetch(`${API_BASE_URL}/habits`)
         .then(res => {
             console.log(res)
             return res.json()
@@ -110,7 +110,7 @@ export const fetchHabits = () => dispatch => {
 export const fetchNames = () => dispatch => {
     dispatch(fetchNamesRequest())
 
-    return fetch(`${API_BASE_URL}/names`)
+    return fetch(`${API_BASE_URL}/habits/names`)
     .then(res => {
         return res.json()
     })
@@ -122,7 +122,7 @@ export const fetchNames = () => dispatch => {
 
 export const checkHabitAction = (day, id) => dispatch => {
 
-    return fetch(`${API_BASE_URL}`, {
+    return fetch(`${API_BASE_URL}/habits`, {
         method: 'PUT',
         body: JSON.stringify({"id" : id, "day" : day}),
         headers: {

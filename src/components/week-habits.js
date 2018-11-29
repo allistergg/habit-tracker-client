@@ -25,7 +25,7 @@ export class weekHabits extends React.Component {
         let days = this.props.days
         console.log(days)
         let dayList = days.map((day, index) => {
-            return (<th><Link className="dayLinks" to="/" onClick={() => {
+            return (<th><Link className="dayLinks" to="/dashboard" onClick={() => {
                 console.log('clicked');
                 this.changeDay(index)
 
