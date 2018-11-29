@@ -16,6 +16,23 @@ export const fetchHabitsError = error => ({
     error
 })
 
+export const FETCH_NAMES_REQUEST = 'FETCH_NAMES_REQUEST';
+export const fetchNamesRequest = () => ({
+    type: FETCH_NAMES_REQUEST
+})
+
+export const FETCH_NAMES_SUCCESS = 'FETCH_NAMES_SUCCESS';
+export const fetchNamesSuccess = habits => ({
+    type: FETCH_NAMES_SUCCESS,
+    habits
+})
+
+export const FETCH_NAMES_ERROR = 'FETCH_NAMES_ERROR';
+export const fetchNamesError = error => ({
+    type: FETCH_NAMES_ERROR,
+    error
+})
+
 export const ADD_HABIT_SUCCESS = 'ADD_HABIT_SUCCESS';
 export const addHabitSuccess = data => ({
     type: ADD_HABIT_SUCCESS,
@@ -35,6 +52,19 @@ export const changeDayAction = (day, direction) => ({
     direction
 }
 )
+
+export const REMOVE_HABIT_SUCCESS = 'REMOVE_HABIT_SUCCESS';
+export const removeHabitSuccess = id => ({
+    type: REMOVE_HABIT_SUCCESS,
+    id
+})
+
+export const removeHabit = id => dispatch => {
+    return fetch(`${API_BASE_URL}/${id}`, {
+        method: 'DELETE'
+    })
+    .then(dispatch(removeHabitSuccess(id)))
+}
 
 
 
@@ -78,7 +108,16 @@ export const fetchHabits = () => dispatch => {
     }
 
 export const fetchNames = () => dispatch => {
-    
+    dispatch(fetchNamesRequest())
+
+    return fetch(`${API_BASE_URL}/names`)
+    .then(res => {
+        return res.json()
+    })
+    .then((data) => {
+        dispatch(fetchNamesSuccess(data))
+    })
+    .catch((err) => dispatch(fetchNamesError(err)))
 }
 
 export const checkHabitAction = (day, id) => dispatch => {

@@ -1,11 +1,12 @@
-import {FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS, CHANGE_DAY} from '../actions/habits'
+import {FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, FETCH_NAMES_REQUEST, FETCH_NAMES_SUCCESS, FETCH_NAMES_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS, CHANGE_DAY, REMOVE_HABIT_SUCCESS } from '../actions/habits'
 
 const initialState = {
     days : [{date : new Date('2018-11-26'), _id : 1 , habits : []}],
     loading: false,
     error: null,
     day: 0,
-    addedHabit: ''
+    addedHabit: '',
+    habits: [{_id: 2, name: 'habit'}]
 }
 
 export default (state=initialState, action) => {
@@ -13,6 +14,12 @@ export default (state=initialState, action) => {
     if (action.type === FETCH_HABITS_REQUEST) {
         return  {
             ...state, 
+            loading: true
+        }
+    }
+    else if (action.type === FETCH_NAMES_REQUEST) {
+        return {
+            ...state,
             loading: true
         }
     }
@@ -24,7 +31,22 @@ export default (state=initialState, action) => {
             error: null
         }
     }
+    else if (action.type === FETCH_NAMES_SUCCESS) {
+        return {
+            ...state,
+            habits : action.habits,
+            loading: false,
+            error: null
+        }
+    }
     else if (action.type === FETCH_HABITS_ERROR) {
+        return {
+            ...state,
+            error: action.error,
+            loading: false
+        }
+    }
+    else if (action.type === FETCH_NAMES_ERROR) {
         return {
             ...state,
             error: action.error,
@@ -36,6 +58,10 @@ export default (state=initialState, action) => {
             ...state,
             addedHabit: action.data
         }
+    }
+
+    else if (action.type === REMOVE_HABIT_SUCCESS) {
+        console.log(action.id)
     }
     else if (action.type === CHECK_HABIT_SUCCESS) {
          console.log(action.data)

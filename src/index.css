@@ -57,7 +57,7 @@ font-size: 14px;
   display: inline-block;
   background-color: #1287a8;
   color: white;
-  padding: 10px 20px;
+  padding: 5px 10px;
   text-align: center; 
   text-decoration: none;
   
@@ -72,7 +72,7 @@ font-size: 14px;
   
 }
 
-.add-button {
+.habit-button {
   background-color: #1287a8;
   color: white;
   text-align: center;
@@ -96,4 +96,24 @@ background-color: red;
 
 .dayLinks:hover {
   background-color: red;
+}
+
+.habit-name {
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 5px;
+  background-color: #ecec9f;
+  
+}
+
+input[type="checkbox"] {
+  opacity: 1;
+  border-radius: 1px;
+  text-align: center;
+  background-color: red;
+}
+
+.checkbox {
+  
+  text-align: center;
 }

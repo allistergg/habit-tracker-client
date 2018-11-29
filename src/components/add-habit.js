@@ -24,7 +24,7 @@ export function AddHabit(props) {
         <div>
             <form className="add-form" onSubmit={(e) => handleSubmit(e)}>
                 <input ref={input => (habitInput = input)}></input>
-                <button className="add-button">Add</button>
+                <button className="habit-button">Add</button>
             </form>
             <div>
                 {output}
