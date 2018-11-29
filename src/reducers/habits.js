@@ -61,7 +61,14 @@ export default (state=initialState, action) => {
     }
 
     else if (action.type === REMOVE_HABIT_SUCCESS) {
-        console.log(action.id)
+        let updatedHabits = state.habits.filter(habit => {
+            return habit._id !== action.id
+        })
+        
+        return {
+            ...state,
+            habits: updatedHabits
+        }
     }
     else if (action.type === CHECK_HABIT_SUCCESS) {
          console.log(action.data)
