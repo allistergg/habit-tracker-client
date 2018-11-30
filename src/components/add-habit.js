@@ -36,7 +36,7 @@ export function AddHabit(props) {
 export const mapStatetoProps = (state) => {
     console.log(state)
     return {
-        addedHabit : state.addedHabit
+        addedHabit : state.data.addedHabit
     }
 }
 

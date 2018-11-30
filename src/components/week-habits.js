@@ -76,8 +76,8 @@ export class weekHabits extends React.Component {
 export const mapStatetoProps = (state) => {
     console.log(state)
     return {
-        days: state.days,
-        day: state.day
+        days: state.data.days,
+        day: state.data.day
     }
 }
 

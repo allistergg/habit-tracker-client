@@ -59,41 +59,51 @@ export const removeHabitSuccess = id => ({
     id
 })
 
-export const removeHabit = id => dispatch => {
+export const removeHabit = id => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/habits/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
     })
-    .then(dispatch(removeHabitSuccess(id)))
+        .then(dispatch(removeHabitSuccess(id)))
 }
 
 
 
-export const addHabit = newHabit => dispatch => {
-    
+export const addHabit = newHabit => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
     console.log(newHabit)
     return fetch(`${API_BASE_URL}/habits`, {
         method: 'POST',
-        body: JSON.stringify({name : newHabit}),
+        body: JSON.stringify({ name: newHabit }),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         }
     })
-    .then(res => {
-        console.log(res)
-        return res.json()
-    })
-    .then(data => {
-        console.log(data)
-        dispatch(addHabitSuccess(data))
-    })
-    .catch(err => console.log(err))
+        .then(res => {
+            console.log(res)
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+            dispatch(addHabitSuccess(data))
+        })
+        .catch(err => console.log(err))
 }
 
-export const fetchHabits = () => dispatch => {
-
+export const fetchHabits = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
     dispatch(fetchHabitsRequest())
 
-    return fetch(`${API_BASE_URL}/habits`)
+    return fetch(`${API_BASE_URL}/habits`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
+    })
         .then(res => {
             console.log(res)
             return res.json()
@@ -105,36 +115,43 @@ export const fetchHabits = () => dispatch => {
         })
         .catch((err) => dispatch(fetchHabitsError(err)))
 
-    }
-
-export const fetchNames = () => dispatch => {
-    dispatch(fetchNamesRequest())
-
-    return fetch(`${API_BASE_URL}/habits/names`)
-    .then(res => {
-        return res.json()
-    })
-    .then((data) => {
-        dispatch(fetchNamesSuccess(data))
-    })
-    .catch((err) => dispatch(fetchNamesError(err)))
 }
 
-export const checkHabitAction = (day, id) => dispatch => {
+export const fetchNames = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    dispatch(fetchNamesRequest())
 
-    return fetch(`${API_BASE_URL}/habits`, {
-        method: 'PUT',
-        body: JSON.stringify({"id" : id, "day" : day}),
+    return fetch(`${API_BASE_URL}/habits/names`, {
+        method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
-            'accept' : 'application/json'
+            Authorization: `Bearer ${authToken}`
         }
     })
-    .then(res => {
-        return res.json();
+        .then(res => {
+            return res.json()
+        })
+        .then((data) => {
+            dispatch(fetchNamesSuccess(data))
+        })
+        .catch((err) => dispatch(fetchNamesError(err)))
+}
+
+export const checkHabitAction = (day, id) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/habits`, {
+        method: 'PUT',
+        body: JSON.stringify({ "id": id, "day": day }),
+        headers: {
+            'Content-Type': 'application/json',
+            'accept': 'application/json',
+            Authorization: `Bearer ${authToken}`
+        }
     })
-    .then(data => {
-        console.log(data)
-        dispatch(checkHabitSuccess(data))
-    })
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            console.log(data)
+            dispatch(checkHabitSuccess(data))
+        })
 }

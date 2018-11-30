@@ -16,7 +16,7 @@ export class EditHabit extends React.Component {
     }
 
     render() {
-
+        
         let habitsList = this.props.habits.map(habit => {
             return <tr><td className="habit-name">{habit.name}</td><td><button onClick={() => this.handleClick(habit._id)} className="habit-button">Remove</button></td></tr>
         })
@@ -40,7 +40,7 @@ export const mapStatetoProps = (state) => {
     console.log(state)
     return {
 
-        habits: state.habits
+        habits: state.data.habits
     }
 }
 

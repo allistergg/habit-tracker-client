@@ -1,7 +1,7 @@
 import {FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, FETCH_NAMES_REQUEST, FETCH_NAMES_SUCCESS, FETCH_NAMES_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS, CHANGE_DAY, REMOVE_HABIT_SUCCESS } from '../actions/habits'
 
 const initialState = {
-    days : [{date : new Date('2018-11-26'), _id : 1 , habits : []}],
+    days : [{date : 0, _id : 1 , habits : []}],
     loading: false,
     error: null,
     day: 0,

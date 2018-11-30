@@ -1,5 +1,9 @@
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers/habits';
+import authReducer from './reducers/auth';
 
-export default createStore(reducer, applyMiddleware(thunk));
+export default createStore(combineReducers({
+    data: reducer,
+    auth: authReducer
+ }), applyMiddleware(thunk));

@@ -4,7 +4,7 @@ import { fetchHabits, checkHabitAction, changeDayAction } from '../actions/habit
 
 
 
-export class Habits extends React.Component {
+export class Days extends React.Component {
 
     componentDidMount() {
         console.log('Component Did Mount')
@@ -25,7 +25,7 @@ export class Habits extends React.Component {
         let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         console.log(day)
         let habitList = this.props.days[day].habits.map((habit) => {
-            return <tr><td className="habit-name">{habit.habit.name}</td><td class="checkbox"><input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" checked={habit.checked} /></td></tr>
+            return <tr><td className="habit-name">{habit.habit.name}</td><td className="checkbox"><input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" checked={habit.checked} /></td></tr>
         })
 
 
@@ -73,11 +73,11 @@ export class Habits extends React.Component {
 export const mapStatetoProps = (state) => {
     console.log(state)
     return {
-        days: state.days,
-        day: state.day
+        days: state.data.days,
+        day: state.data.day
     }
 }
 
 
 
-export default connect(mapStatetoProps)(Habits)
+export default connect(mapStatetoProps)(Days)
