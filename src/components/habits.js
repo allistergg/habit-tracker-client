@@ -25,43 +25,43 @@ export class Days extends React.Component {
         let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         console.log(day)
         let habitList = this.props.days[day].habits.map((habit, index) => {
-            return <tr key={index}><td className="habit-name">{habit.habit.name}</td><td className="checkbox"><input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" checked={habit.checked} /></td></tr>
+            return <tr key={index}><td className="habit-name">{habit.habit.name}</td><td className="checkbox"><input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[day]}`} aria-label={`${habit.habit.name}-${weekDays[day]}`}checked={habit.checked} /></td></tr>
         })
 
 
         return (
 
-            
-                <div>
-                     
-                        <h1 className="dayName">{weekDays[day]}</h1>
-                        <button className="prev" onClick={() => {
-                        console.log('clicked');
-                        this.changeDay(this.props.day, 'prev')
-                    }}>Prev</button>
-                        <button className="next" onClick={() => {
-                            console.log('clicked');
-                            this.changeDay(this.props.day, 'next')
-                        }}>Next</button>
-                    
-                    
-                    <table>
+
+            <div>
+
+                <h1 className="dayName">{weekDays[day]}</h1>
+                <button className="prev" onClick={() => {
+                    console.log('clicked');
+                    this.changeDay(this.props.day, 'prev')
+                }}>Prev</button>
+                <button className="next" onClick={() => {
+                    console.log('clicked');
+                    this.changeDay(this.props.day, 'next')
+                }}>Next</button>
+
+
+                <table>
                     <tbody>
-                    <tr>
-                        <th>Habit</th>
-                        <th>Done?</th>
-                    </tr>
-                    {habitList}
+                        <tr>
+                            <th>Habit</th>
+                            <th>Done?</th>
+                        </tr>
+                        {habitList}
                     </tbody>
-                    </table>
-                  
-                    <p>
+                </table>
+
+                <p>
                     {'✔'.repeat(this.props.days[day].habits.filter(habit => habit.checked === true).length)}
                     ({this.props.days[day].habits.filter(habit => habit.checked === true).length}/ {this.props.days[day].habits.length})</p>
-                    
-                    
-                </div>
-        
+
+
+            </div>
+
 
 
 

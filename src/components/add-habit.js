@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addHabit } from '../actions/habits.js'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Habits from './habits';
-import weekHabits from './week-habits';
+
 
 
 export function AddHabit(props) {
@@ -36,7 +34,7 @@ export function AddHabit(props) {
 export const mapStatetoProps = (state) => {
     console.log(state)
     return {
-        addedHabit : state.data.addedHabit
+        addedHabit: state.data.addedHabit
     }
 }
 

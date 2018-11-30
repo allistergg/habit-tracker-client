@@ -16,7 +16,7 @@ export class EditHabit extends React.Component {
     }
 
     render() {
-        
+
         let habitsList = this.props.habits.map((habit, index) => {
             return <tr key={index}><td className="habit-name">{habit.name}</td><td><button onClick={() => this.handleClick(habit._id)} className="habit-button">Remove</button></td></tr>
         })

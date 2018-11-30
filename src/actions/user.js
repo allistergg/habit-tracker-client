@@ -1,6 +1,6 @@
 
-import {API_BASE_URL} from '../config';
-import { authError} from './auth'
+import { API_BASE_URL } from '../config';
+import { authError } from './auth'
 
 
 export const registerUser = user => dispatch => {
@@ -11,9 +11,9 @@ export const registerUser = user => dispatch => {
         },
         body: JSON.stringify(user)
     })
-       .then(res => res.json())
+        .then(res => res.json())
         .catch(err => {
             dispatch(authError(err))
-            
+
         });
 };

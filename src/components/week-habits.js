@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchHabits, checkHabitAction, changeDayAction } from '../actions/habits';
 
 
@@ -41,13 +41,13 @@ export class weekHabits extends React.Component {
         })
 
         let habitsList = days[this.props.day].habits.map((habit, index) => <tr key={index}><td className="habit-name">{habit.habit.name}</td>
-            <td className="checkbox"><input onChange={() => this.checkHabit(days[0]._id, habit.habit._id)} type="checkbox" checked={days[0].habits[index].checked} /></td>
-            <td className="checkbox"><input onChange={() => this.checkHabit(days[1]._id, habit.habit._id)} type="checkbox" checked={days[1].habits[index].checked} /></td>
-            <td className="checkbox"><input onChange={() => this.checkHabit(days[2]._id, habit.habit._id)} type="checkbox" checked={days[2].habits[index].checked} /></td>
-            <td className="checkbox"><input onChange={() => this.checkHabit(days[3]._id, habit.habit._id)} type="checkbox" checked={days[3].habits[index].checked} /></td>
-            <td className="checkbox"><input onChange={() => this.checkHabit(days[4]._id, habit.habit._id)} type="checkbox" checked={days[4].habits[index].checked} /></td>
-            <td className="checkbox"><input onChange={() => this.checkHabit(days[5]._id, habit.habit._id)} type="checkbox" checked={days[5].habits[index].checked} /></td>
-            <td className="checkbox"><input onChange={() => this.checkHabit(days[6]._id, habit.habit._id)} type="checkbox" checked={days[6].habits[index].checked} /></td>
+            <td className="checkbox"><input onChange={() => this.checkHabit(days[0]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[0]}`} aria-label={`${habit.habit.name}-${weekDays[0]}`} checked={days[0].habits[index].checked} /></td>
+            <td className="checkbox"><input onChange={() => this.checkHabit(days[1]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[1]}`} aria-label={`${habit.habit.name}-${weekDays[1]}`} checked={days[1].habits[index].checked} /></td>
+            <td className="checkbox"><input onChange={() => this.checkHabit(days[2]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[2]}`} aria-label={`${habit.habit.name}-${weekDays[2]}`} checked={days[2].habits[index].checked} /></td>
+            <td className="checkbox"><input onChange={() => this.checkHabit(days[3]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[3]}`} aria-label={`${habit.habit.name}-${weekDays[3]}`} checked={days[3].habits[index].checked} /></td>
+            <td className="checkbox"><input onChange={() => this.checkHabit(days[4]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[4]}`} aria-label={`${habit.habit.name}-${weekDays[4]}`} checked={days[4].habits[index].checked} /></td>
+            <td className="checkbox"><input onChange={() => this.checkHabit(days[5]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[5]}`} aria-label={`${habit.habit.name}-${weekDays[5]}`} checked={days[5].habits[index].checked} /></td>
+            <td className="checkbox"><input onChange={() => this.checkHabit(days[6]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[6]}`} aria-label={`${habit.habit.name}-${weekDays[6]}`} checked={days[6].habits[index].checked} /></td>
         </tr>)
         return (
             <div>

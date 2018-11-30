@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import LandingPage from './components/landing-page';
 import Dashboard from './components/dashboard';
 import RegistrationPage from './components/registration-page';
@@ -11,7 +11,7 @@ export class App extends React.Component {
 
     render() {
         return (
-            
+
             <div className="app">
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/dashboard" component={Dashboard} />
