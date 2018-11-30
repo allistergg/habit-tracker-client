@@ -25,7 +25,7 @@ export class weekHabits extends React.Component {
         let days = this.props.days
         console.log(days)
         let dayList = days.map((day, index) => {
-            return (<th><Link className="dayLinks" to="/dashboard" onClick={() => {
+            return (<th key={index}><Link className="dayLinks" to="/dashboard" onClick={() => {
                 console.log('clicked');
                 this.changeDay(index)
 
@@ -34,13 +34,13 @@ export class weekHabits extends React.Component {
 
         let displayList = days.map((day, index) => {
             console.log(day)
-            return (<p>
+            return (<p key={index}>
                 {weekDays[index]} : {'✔'.repeat(day.habits.filter(habit => habit.checked === true).length)}
                 ({day.habits.filter(habit => habit.checked === true).length} / {day.habits.length})
             </p>)
         })
 
-        let habitsList = days[this.props.day].habits.map((habit, index) => <tr><td className="habit-name">{habit.habit.name}</td>
+        let habitsList = days[this.props.day].habits.map((habit, index) => <tr key={index}><td className="habit-name">{habit.habit.name}</td>
             <td className="checkbox"><input onChange={() => this.checkHabit(days[0]._id, habit.habit._id)} type="checkbox" checked={days[0].habits[index].checked} /></td>
             <td className="checkbox"><input onChange={() => this.checkHabit(days[1]._id, habit.habit._id)} type="checkbox" checked={days[1].habits[index].checked} /></td>
             <td className="checkbox"><input onChange={() => this.checkHabit(days[2]._id, habit.habit._id)} type="checkbox" checked={days[2].habits[index].checked} /></td>

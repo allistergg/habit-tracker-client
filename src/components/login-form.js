@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import {login} from '../actions/auth'
 
 export function LoginForm(props) {
+    
+    
+    
     let usernameInput;
     let passwordInput;
     const handleSubmit = (e) => {
@@ -19,7 +22,7 @@ export function LoginForm(props) {
             <label htmlFor="password">Password</label>
             <input ref={input => (passwordInput = input)}type="password" id="password" name="password"></input>
 
-            <button type="submit">
+            <button className="nav-link login" type="submit">
                 Log in
             </button>
         </form >
@@ -30,7 +33,7 @@ export function LoginForm(props) {
     export const mapStatetoProps = (state) => {
         console.log(state)
         return {
-            
+           
         }
     }
 

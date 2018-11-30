@@ -24,15 +24,15 @@ export class Days extends React.Component {
         let day = this.props.day
         let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         console.log(day)
-        let habitList = this.props.days[day].habits.map((habit) => {
-            return <tr><td className="habit-name">{habit.habit.name}</td><td className="checkbox"><input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" checked={habit.checked} /></td></tr>
+        let habitList = this.props.days[day].habits.map((habit, index) => {
+            return <tr key={index}><td className="habit-name">{habit.habit.name}</td><td className="checkbox"><input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" checked={habit.checked} /></td></tr>
         })
 
 
         return (
 
             
-                <div className="header-container">
+                <div>
                      
                         <h1 className="dayName">{weekDays[day]}</h1>
                         <button className="prev" onClick={() => {

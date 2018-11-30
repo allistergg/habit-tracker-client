@@ -12,7 +12,7 @@ export class App extends React.Component {
     render() {
         return (
             
-            <div>
+            <div className="app">
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={RegistrationPage} />

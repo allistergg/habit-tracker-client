@@ -6,14 +6,14 @@ import LoginForm from './login-form'
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's dashboard
     if (props.loggedIn) {
-        return <Redirect to="/dashboard" />;
+        return <Redirect to="/dashboard/" />;
     }
 
     return (
         <div className="home">
-            <h2>Habit Tracker</h2>
+            <h2>Login</h2>
             <LoginForm />
-            <Link to="/register">Register</Link>
+            <Link className="login-link" to="/register">Register</Link>
         </div>
     );
 }
