@@ -1,44 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+This app tracks completion of habits by day and week. Upon registration, the user is taken to an empty dashboard, from which they can navigate via top navigation bar to the edit habits page where they can add and remove habits. Once a habit has been added, the user can then check off completion of the habit by day and by week. They are given feedback below about how many habits they have completed on each day. I created this app as a tool to use personally each day to monitor and hopefully improve my habits.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+A demo of the currently deployed version of the app can be found at :
 
-### `npm test`
+https://hidden-waters-84453.herokuapp.com/
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The client was built using create-react-app to create a react app and uses React and Redux.
 
-### `npm run build`
+The server was built using Joe Turner's server template, and uses Node, Express, Passport, JWT, MongoDb and Mongoose.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The endpoints used are /api/habits, /api/habits/names.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The habits endpoint is called by the Days and Weeks components to store user checks of habits by day.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The names endpoint is used to store the list of user habits.
 
-### `npm run eject`
+Plans and Ideas for improvement:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Add validation to add-habit input
+- Add matching password input for registration page
+- Improve semantics of mark-up and code
+- Improve responsiveness for larger screens
+- Include landing page to explain app to users
+- Create larger custom checkboxes, or change checkboxes to generally clickable areas
+- Give more visually appealing feedback to user 
+- Display errors and loading message to users on screen
+- Add support for multiple weeks, dates, months, etc., extend to include and show more data, tracking over time
+- Add ability to view habits on own page
+- Add ability to edit habits
+- Add a calendar
+- Add Enzyme tests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

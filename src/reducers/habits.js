@@ -74,15 +74,6 @@ export default (state = initialState, action) => {
     else if (action.type === CHECK_HABIT_SUCCESS) {
         console.log(action.data)
 
-
-        // const modArray = state.days[action.day].habits.map(item => Object.assign({}, item))
-        // for (let i = 0; i < modArray.length; i++) {
-        //     if (modArray[i].id === action.id) {
-        //         modArray[i].checked = !modArray[i].checked;
-        //         break;
-        //     } 
-        // }
-
         let updateIndex;
         for (let i = 0; i < state.days.length; i++) {
             if (state.days[i]._id === action.data._id) {
