@@ -13,8 +13,10 @@ export function AddHabit(props) {
         habitInput.value = "";
     }
     let output;
-    if (props.addedHabit) {
+    if (props.addedHabit && !props.error) {
         output = <p>{props.addedHabit.name} added</p>
+    } else if (props.error) {
+        output = <p>{props.error.message}</p>
     } else {
         output = <p></p>
     }
@@ -34,7 +36,8 @@ export function AddHabit(props) {
 export const mapStatetoProps = (state) => {
     console.log(state)
     return {
-        addedHabit: state.data.addedHabit
+        addedHabit: state.data.addedHabit,
+        error: state.data.error
     }
 }
 

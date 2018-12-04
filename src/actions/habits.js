@@ -39,6 +39,12 @@ export const addHabitSuccess = data => ({
     data
 })
 
+export const ADD_HABIT_ERROR = 'ADD_HABIT_ERROR';
+export const addHabitError = error => ({
+    type: ADD_HABIT_ERROR,
+    error
+})
+
 export const CHECK_HABIT_SUCCESS = 'CHECK_HABIT_SUCCESS';
 export const checkHabitSuccess = (data) => ({
     type: CHECK_HABIT_SUCCESS,
@@ -88,10 +94,15 @@ export const addHabit = newHabit => (dispatch, getState) => {
             return res.json()
         })
         .then(data => {
+            if (data.name) {
             console.log(data)
             dispatch(addHabitSuccess(data))
+            }
+            else {
+                throw new Error('Habit cannot be empty')
+            }
         })
-        .catch(err => console.log(err))
+        .catch(err => dispatch(addHabitError(err)))
 }
 
 export const fetchHabits = () => (dispatch, getState) => {

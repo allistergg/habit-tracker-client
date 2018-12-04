@@ -1,4 +1,4 @@
-import { FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, FETCH_NAMES_REQUEST, FETCH_NAMES_SUCCESS, FETCH_NAMES_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS, CHANGE_DAY, REMOVE_HABIT_SUCCESS } from '../actions/habits'
+import { FETCH_HABITS_REQUEST, FETCH_HABITS_SUCCESS, FETCH_HABITS_ERROR, FETCH_NAMES_REQUEST, FETCH_NAMES_SUCCESS, FETCH_NAMES_ERROR, ADD_HABIT_SUCCESS, CHECK_HABIT_SUCCESS, CHANGE_DAY, REMOVE_HABIT_SUCCESS, ADD_HABIT_ERROR } from '../actions/habits'
 
 const initialState = {
     days: [{ date: 0, _id: 1, habits: [] }],
@@ -56,8 +56,18 @@ export default (state = initialState, action) => {
     else if (action.type === ADD_HABIT_SUCCESS) {
         return {
             ...state,
+            error: null,
             addedHabit: action.data,
             habits: [...state.habits, action.data]
+        }
+    }
+
+    else if (action.type === ADD_HABIT_ERROR) {
+        return {
+
+        ...state,
+        error: action.error,
+        loading: false
         }
     }
 
