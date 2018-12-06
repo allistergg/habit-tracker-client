@@ -21,7 +21,7 @@ export default () => Component => {
         authenticating: state.auth.loading,
         loggedIn: state.auth.currentUser !== null,
         error: state.auth.error
-    });
+        });
 
     return connect(mapStateToProps)(RequiresLogin);
 };

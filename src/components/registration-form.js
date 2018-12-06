@@ -3,16 +3,21 @@ import { connect } from 'react-redux';
 import { registerUser } from '../actions/user';
 import { login } from '../actions/auth';
 
-export function LoginForm(props) {
+export function RegistrationForm(props) {
     let usernameInput;
     let passwordInput;
+    let passwordConfirmInput;
     const handleSubmit = (e) => {
         e.preventDefault()
         let username = usernameInput.value;
         let password = passwordInput.value;
-        let user = { username, password }
+        let passwordConfirm = passwordConfirmInput.value;
+        let user = { username, password, passwordConfirm }
         return props.dispatch(registerUser(user))
-            .then(() => props.dispatch(login(username, password)))
+            .then((res) => {
+                console.log(res)
+                props.dispatch(login(username, password))
+            })
 
     }
 
@@ -22,10 +27,13 @@ export function LoginForm(props) {
             <input ref={input => (usernameInput = input)} type="text" id="username" name="username"></input>
             <label htmlFor="password">Password</label>
             <input ref={input => (passwordInput = input)} type="password" id="password" name="password"></input>
-
+            <label htmlFor="password-confirm">Re-enter Password</label>
+            <input ref={input => (passwordConfirmInput = input)} type="password" id="password-confirm" name="password-confirm"></input>
+            
             <button className="nav-link login" type="submit">
                 Register
             </button>
+            <p>{props.error ? props.error.message : ''}</p>
         </form >
     )
 
@@ -34,8 +42,8 @@ export function LoginForm(props) {
 export const mapStatetoProps = (state) => {
     console.log(state)
     return {
-
+        error: state.auth.error
     }
 }
 
-export default connect(mapStatetoProps)(LoginForm);
+export default connect(mapStatetoProps)(RegistrationForm);

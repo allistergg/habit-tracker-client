@@ -1,9 +1,12 @@
 
 import { API_BASE_URL } from '../config';
-import { authError } from './auth'
+import { authError, authRequest } from './auth'
+import {normalizeResponseErrors} from './utils'
+
 
 
 export const registerUser = user => dispatch => {
+    dispatch(authRequest())
     return fetch(`${API_BASE_URL}/users`, {
         method: 'POST',
         headers: {
@@ -11,9 +14,15 @@ export const registerUser = user => dispatch => {
         },
         body: JSON.stringify(user)
     })
-        .then(res => res.json())
+    .then(res => normalizeResponseErrors(res))    
+    .then(res => {
+            console.log(res)
+            res.json()
+        })
         .catch(err => {
+            console.log(err)
             dispatch(authError(err))
+            throw err;
 
         });
 };

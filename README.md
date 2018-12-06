@@ -20,7 +20,6 @@ The names endpoint is used to store the list of user habits.
 
 Plans and Ideas for improvement:
 
-- Add validation to add-habit input
 - Add matching password input for registration page
 - Improve semantics of mark-up and code
 - Improve responsiveness for larger screens

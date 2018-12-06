@@ -6,12 +6,15 @@ import Days from './habits';
 import weekHabits from './week-habits';
 import EditHabit from './edit-habit';
 import { clearAuth } from '../actions/auth'
+import {clearAuthToken} from '../local-storage';
 
 
 export class Dashboard extends React.Component {
 
+   
     logOut() {
-        this.props.dispatch(clearAuth())
+        this.props.dispatch(clearAuth());
+        clearAuthToken();
     }
 
 

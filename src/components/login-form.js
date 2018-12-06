@@ -25,6 +25,7 @@ export function LoginForm(props) {
             <button className="nav-link login" type="submit">
                 Log in
             </button>
+            <p>{props.error ? props.error.message : ''}</p>
         </form >
     )
 
@@ -33,7 +34,7 @@ export function LoginForm(props) {
 export const mapStatetoProps = (state) => {
     console.log(state)
     return {
-
+        error: state.auth.error
     }
 }
 
