@@ -11,6 +11,11 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
+            <p className="welcome">Welcome to the habit tracker. Register to begin.
+                Add a habit from the Edit Habits page, and check off whether you have completed
+                it for the day. See how many habits you have completed
+                each day for the week.
+            </p>
             <h2>Login</h2>
             <LoginForm />
             <Link className="login-link" to="/register">Register</Link>

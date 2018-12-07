@@ -10,6 +10,11 @@ export function RegistrationPage(props) {
     }
     return (
         <div className="home">
+            <p className="welcome">Welcome to the habit tracker. Register to begin.
+                Add a habit from the Edit Habits page, and check off whether you have completed
+                it for the day. See how many habits you have completed
+                each day for the week.
+            </p>
             <h2>Register</h2>
             <RegistrationForm />
             <Link className="login-link" to="/">Login</Link>

@@ -25,7 +25,7 @@ export function LoginForm(props) {
             <button className="nav-link login" type="submit">
                 Log in
             </button>
-            <p>{props.error ? props.error.message : ''}</p>
+            <p className="error">{props.error ? props.error.message : ''}</p>
         </form >
     )
 

@@ -16,7 +16,7 @@ export function AddHabit(props) {
     if (props.addedHabit && !props.error) {
         output = <p>{props.addedHabit.name} added</p>
     } else if (props.error) {
-        output = <p>{props.error.message}</p>
+        output = <p className="error">{props.error.message}</p>
     } else {
         output = <p></p>
     }

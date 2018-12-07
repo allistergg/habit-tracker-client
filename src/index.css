@@ -46,7 +46,7 @@ font-size: 14px;
 }
 
 .prev:hover {
-  background-color: red;
+  background-color: #117796;
 }
 
 .next {
@@ -61,7 +61,7 @@ font-size: 14px;
 }
 
 .next:hover {
-  background-color: red;
+  background-color: #117796;
 }
 
 .dayName {
@@ -84,7 +84,7 @@ font-size: 14px;
 }
 
 .nav-link:hover{
-  background-color: red;
+  background-color: #117796;
 }
 
 .add-form {
@@ -103,11 +103,11 @@ font-size: 14px;
 }
 
 .add-button:hover {
-background-color: red;
+background-color: #117796;
 }
 
 .dayLinks {
-  background-color: #0e5d74;
+  background-color: #0c5d74;
   color: white;
   text-align: center;
   padding: 2px;
@@ -115,7 +115,7 @@ background-color: red;
 }
 
 .dayLinks:hover {
-  background-color: red;
+  background-color: #117796;
 }
 
 .habit-name {
@@ -130,7 +130,7 @@ input[type="checkbox"] {
   opacity: 1;
   border-radius: 1px;
   text-align: center;
-  background-color: red;
+  background-color:#117796;
 }
 
 .checkbox {
@@ -173,5 +173,18 @@ table {
 .add-form > button {
   margin-left: auto;
   margin-right: auto;
+}
+
+.welcome {
+  max-width: 600px;
+  margin: 25px auto;
+  border: 1px lightgrey solid;
+  padding: 5px;
+}
+
+.error {
+  color: rgb(160, 3, 3);
+  font-size: 16px;
+  text-transform: capitalize;
 }
 

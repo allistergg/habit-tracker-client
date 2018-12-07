@@ -27,7 +27,7 @@ export class Days extends React.Component {
         let habitList = this.props.days[day].habits.map((habit, index) => {
             return <tr key={index}><td className="habit-name">{habit.habit.name}</td><td className="checkbox"><input onChange={() => this.checkHabit(this.props.days[day]._id, habit.habit._id)} type="checkbox" title={`${habit.habit.name}-${weekDays[day]}`} aria-label={`${habit.habit.name}-${weekDays[day]}`}checked={habit.checked} /></td></tr>
         })
-
+        
 
         return (
 
@@ -54,7 +54,7 @@ export class Days extends React.Component {
                         {habitList}
                     </tbody>
                 </table>
-
+                
                 <p>
                     {'✔'.repeat(this.props.days[day].habits.filter(habit => habit.checked === true).length)}
                     ({this.props.days[day].habits.filter(habit => habit.checked === true).length}/ {this.props.days[day].habits.length})</p>
