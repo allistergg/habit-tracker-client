@@ -8,8 +8,6 @@ A demo of the currently deployed version of the app can be found at :
 
 https://hidden-waters-84453.herokuapp.com/
 
-![Screenshots](screenshot.xcf)
-
 The client was built using create-react-app to create a react app and uses React and Redux.
 
 The server was built using Joe Turner's server template, and uses Node, Express, Passport, JWT, MongoDb and Mongoose.
@@ -28,10 +26,7 @@ Added Recently:
 - More information on landing page
 - Feedback to user for errors
 
-
-
 Plans and Ideas for improvement:
-
 
 - Improve semantics of mark-up and code
 - Improve responsiveness for larger screens
